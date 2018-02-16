@@ -2,7 +2,7 @@
 
 set -x
 
-# Recupére les options de base pour whiptail
+# Prepare les fonctions pour whiptail
 . scripts/init_whiptail.sh 
 
 
@@ -11,4 +11,8 @@ WT_MSG="Bienvenue dans le script LPE3\nCreer par Lilian & Timothee"
 
 _msgbox
 
-. scripts/menu_principal.sh
+# On affiche le menu principal
+while true; do
+    . scripts/menu_principal.sh
+done
+
