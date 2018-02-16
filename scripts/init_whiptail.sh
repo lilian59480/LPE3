@@ -30,6 +30,7 @@ function _menubox {
     WT_MENU_CHOICE=$("$WHIPTAIL" --backtitle "$WT_BACKTITLE" \
         --title "$WT_TITLE" \
         --menu "$WT_MSG" 0 0 0 "${WT_MENU[@]}" 3>&1 1>&2 2>&3)
+    WT_EXIT_STATUS=$?
 }
 
 

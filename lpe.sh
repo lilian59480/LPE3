@@ -20,5 +20,11 @@ WT_MENU=("<-- Back" "Return to the main menu." \
     "Modify Group" "Modify a group and its list of members." \
     "List Groups" "List all groups on the system.")
 
-
 _menubox
+
+if [ $WT_EXIT_STATUS = 0 ]; then
+    echo "Choix: " $WT_MENU_CHOICE
+else
+    echo "Annule"
+fi
+
