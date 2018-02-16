@@ -6,7 +6,7 @@ WT_MENU=("Compiler" "Compiler les elements de notre systeme" \
     "Creer le systeme" "Creer une partition et le necessaire pour le systeme" \
     "Sauvegarder" "Sauvegarder la partition" \
     "Restaurer" "Restaurer la partition")
-
+QUIT_MENU=0
 _menubox
 
 if ! [ $WT_EXIT_STATUS = 0 ]; then
@@ -15,9 +15,9 @@ fi
 
 case "$WT_MENU_CHOICE" in
     "Compiler")
-        WT_TITLE="Compiler"
-        WT_MSG="Compiler"
-        _msgbox
+        while [ $QUIT_MENU = 0 ]; do
+            . scripts/menu_compilation.sh
+        done 
     ;;
     "Creer le systeme")
         WT_TITLE="Creer le systeme"
