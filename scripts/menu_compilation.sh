@@ -13,9 +13,7 @@ fi
 
 case "$WT_MENU_CHOICE" in
     "Busybox")
-        WT_TITLE="Compiler"
-        WT_MSG="Compiler"
-        _msgbox
+        . scripts/compiler_busybox.sh
     ;;
     "Kernel (noyau)")
         WT_TITLE="Creer le systeme"

@@ -33,6 +33,12 @@ function _menubox {
     WT_EXIT_STATUS=$?
 }
 
-
-
+# Merci à https://stackoverflow.com/a/10792311
+# Afin de fournir qqchose de pratique
+function _downloadbox { 
+    wget "$WT_URL" --show-progress -O "$WT_PATH" 2>&1 | stdbuf -o0 awk '/[.] +[0-9][0-9]?[0-9]?%/ { print substr($0,63,3) }' | \
+        "$WHIPTAIL" --backtitle "$WT_BACKTITLE" \
+        --title "$WT_TITLE" \
+        --gauge "$WT_MSG" 0 0 0
+}
 
