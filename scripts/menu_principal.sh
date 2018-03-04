@@ -20,9 +20,9 @@ case "$WT_MENU_CHOICE" in
         done 
     ;;
     "Creer le systeme")
-        WT_TITLE="Creer le systeme"
-        WT_MSG="Creer le systeme"
-        _msgbox
+        while [ $QUIT_MENU = 0 ]; do
+            . scripts/menu_creation.sh
+        done 
     ;;
     "Sauvegarder")
         WT_TITLE="Sauvegarder"
