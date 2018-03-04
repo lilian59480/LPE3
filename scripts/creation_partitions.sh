@@ -11,7 +11,7 @@ DRIVES=$(lsblk -do name,size | tail -n +2 | awk '{if (NR == 1){ \
     {print "/dev/"$0, "OFF"}}')
 
 WT_RADIO=($DRIVES)
-WT_MSG="Quelle partition choisir ?"
+WT_MSG="Quelle disque choisir ?"
 
 _radiobox
 
