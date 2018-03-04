@@ -16,9 +16,7 @@ case "$WT_MENU_CHOICE" in
         . scripts/creation_partitions.sh
     ;;
     "Systeme de fichiers")
-        WT_TITLE="FS"
-        WT_MSG="Creer le systeme"
-        _msgbox
+        . scripts/creation_fs.sh
     ;;
     *)
     ;;
