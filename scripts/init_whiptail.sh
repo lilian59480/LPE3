@@ -20,6 +20,17 @@ function _errbox {
             --msgbox "$WT_MSG" 0 0
 }
 
+function _warningbox {
+    NEWT_COLORS='
+        window=,brightred
+        border=white,brightred
+        textbox=white,brightred
+        button=black,white'\
+            "$WHIPTAIL" --backtitle "$WT_BACKTITLE" \
+            --title "$WT_TITLE" \
+            --msgbox "$WT_MSG" 0 0
+}
+
 function _msgbox {
     "$WHIPTAIL" --backtitle "$WT_BACKTITLE" \
         --title "$WT_TITLE" \
@@ -37,6 +48,13 @@ function _questionbox {
     "$WHIPTAIL" --backtitle "$WT_BACKTITLE" \
         --title "$WT_TITLE" \
         --yesno "$WT_MSG" 0 0
+    WT_EXIT_STATUS=$?
+}
+
+function _radiobox {
+    WT_RADIO_CHOICE=$("$WHIPTAIL" --backtitle "$WT_BACKTITLE" \
+        --title "$WT_TITLE" \
+        --radiolist "$WT_MSG" 0 0 0 "${WT_RADIO[@]}" 3>&1 1>&2 2>&3)
     WT_EXIT_STATUS=$?
 }
 

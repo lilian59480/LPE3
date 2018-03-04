@@ -13,9 +13,7 @@ fi
 
 case "$WT_MENU_CHOICE" in
     "Partitionner")
-        WT_TITLE="Partition"
-        WT_MSG="Creer le systeme"
-        _msgbox
+        . scripts/creation_partitions.sh
     ;;
     "Systeme de fichiers")
         WT_TITLE="FS"
