@@ -58,6 +58,13 @@ function _radiobox {
     WT_EXIT_STATUS=$?
 }
 
+function _inputbox {
+    WT_INPUT_CHOICE=$("$WHIPTAIL" --backtitle "$WT_BACKTITLE" \
+        --title "$WT_TITLE" \
+        --inputbox "$WT_MSG" 0 0 "$WT_INPUT_DEFAULT" 3>&1 1>&2 2>&3)
+    WT_EXIT_STATUS=$?
+}
+
 # Merci à https://stackoverflow.com/a/10792311
 # Afin de fournir qqchose de pratique
 function _downloadbox { 
