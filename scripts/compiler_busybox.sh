@@ -9,19 +9,23 @@ _msgbox
 # Creation du dossier
 mkdir -p download/busybox/
 
-# Sauvegarde
-rm -f download/busybox/busybox.tar.bz2~
-mv -f download/busybox/busybox.tar.bz2 download/busybox/busybox.tar.bz2~
+WT_MSG="Voulez vous telecharger Busybox?"
 
-WT_MSG="Telechargement de Busybox"
-WT_URL="https://busybox.net/downloads/busybox-1.27.2.tar.bz2"
-WT_PATH="download/busybox/busybox.tar.bz2"
+_questionbox
+WT_MSG="Chargement du menu de configuration"
 
-_downloadbox
+if [ $WT_EXIT_STATUS = 0 ]; then
+    # Sauvegarde
+    rm -f download/busybox/busybox.tar.bz2~
+    mv -f download/busybox/busybox.tar.bz2 download/busybox/busybox.tar.bz2~
 
+    WT_MSG="Telechargement de Busybox"
+    WT_URL="https://busybox.net/downloads/busybox-1.27.2.tar.bz2"
+    WT_PATH="download/busybox/busybox.tar.bz2"
 
-WT_TITLE="Compilation de Busybox"
-WT_MSG="Telechargement termine. Chargement du menu de configuration"
+    _downloadbox
+    WT_MSG="Telechargement termine. Chargement du menu de configuration"
+fi
 
 _msgbox
 
@@ -44,8 +48,6 @@ COMPILATION_STATUS=$?
 
 # On revient a notre dossier
 cd ../../../
-
-WT_TITLE="Compilation de Busybox"
 
 if [ $COMPILATION_STATUS != 0 ]; then
     WT_MSG="Erreur de compilation.\nVerifier les messages de log"

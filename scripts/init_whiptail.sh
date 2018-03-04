@@ -33,6 +33,13 @@ function _menubox {
     WT_EXIT_STATUS=$?
 }
 
+function _questionbox {
+    "$WHIPTAIL" --backtitle "$WT_BACKTITLE" \
+        --title "$WT_TITLE" \
+        --yesno "$WT_MSG" 0 0
+    WT_EXIT_STATUS=$?
+}
+
 # Merci à https://stackoverflow.com/a/10792311
 # Afin de fournir qqchose de pratique
 function _downloadbox { 
