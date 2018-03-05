@@ -10,7 +10,8 @@ if [ -z "$LPE_EMB" ]; then
 else
     WT_MENU=("Partitionner" "Partitionner le disque" \
         "Systeme de fichiers" "Ajouter un systeme de fichier"\
-        "Chemins" "Chemin : $LPE_EMB")
+        "Chemins" "Chemin : $LPE_EMB"\
+        "Copie (V1)" "Copie des fichiers de base")
 fi
 
 _menubox
@@ -39,10 +40,12 @@ case "$WT_MENU_CHOICE" in
         WT_MSG="Saisissez la partition a monter"
         WT_INPUT_DEFAULT=""
 
+        LPE_DEV_P=$WT_INPUT_CHOICE
+
         _inputbox
 
         if [ $WT_EXIT_STATUS = 0 ]; then
-            mount "$WT_INPUT_CHOICE" "$LPE_EMB"
+            mount "$LPE_DEV_P" "$LPE_EMB"
             MOUNT_STATUS=$?
 
             if [ $MOUNT_STATUS != 0 ]; then
@@ -55,6 +58,9 @@ case "$WT_MENU_CHOICE" in
         fi
 
         fi
+    ;;
+    "Copie (V1)")
+        . scripts/creation_copiev1.sh
     ;;
     *)
     ;;
