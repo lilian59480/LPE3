@@ -59,6 +59,21 @@ none /dev/pts devpts mode=622 0 0
 none /proc proc defaults 0 0" > "$LPE_EMB/etc/fstab"
 
 # Creation de l'entree dans le fichier grub
+echo "#!/bin/sh
+exec tail -n +3 \$0
+# Busybox
+menuentry 'Busybox Petitpas Mauriaucourt' {
+    insmod gzio
+    insmod part_msdos
+    insmod ext2
+    set root='hd1,msdos1'
+    echo 'Chargement de Linux $LPE_UNAME_K_RELEASE'
+    linux /boot/vmlinuz-$LPE_UNAME_K_RELEASE root=$LPE_DEV_P ro
+    echo 'Chargement du disque initrd'
+    initrd /boot/initrd.img-$LPE_UNAME_K_RELEASE
+}" > /etc/grub.d/40_custom
+
+update-grub2
 
 # Copie du clavier fr
 "$LPE_EMB/bin/dumpkmap" > "$LPE_EMB/etc/french.kmap"

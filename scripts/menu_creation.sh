@@ -40,9 +40,9 @@ case "$WT_MENU_CHOICE" in
         WT_MSG="Saisissez la partition a monter"
         WT_INPUT_DEFAULT=""
 
-        LPE_DEV_P=$WT_INPUT_CHOICE
-
         _inputbox
+
+        LPE_DEV_P=$WT_INPUT_CHOICE
 
         if [ $WT_EXIT_STATUS = 0 ]; then
             mount "$LPE_DEV_P" "$LPE_EMB"
