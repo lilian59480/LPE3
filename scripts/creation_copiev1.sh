@@ -50,7 +50,8 @@ mount -t proc /proc
 mount -o remount,rw /
 mount -a
 loadkmap < /etc/french.kmap
-ifconfig lo 127.0.0.1" > "$LPE_EMB/etc/init.d/rcS"
+ifconfig lo 127.0.0.1
+udhcpc" > "$LPE_EMB/etc/init.d/rcS"
 
 chmod a+x "$LPE_EMB/etc/init.d/rcS"
 
@@ -77,3 +78,17 @@ update-grub2
 
 # Copie du clavier fr
 "$LPE_EMB/bin/dumpkmap" > "$LPE_EMB/etc/french.kmap"
+
+# Copie du fichier udhcpc
+cp -v compilation/busybox/busybox-1.27.2/examples/udhcp/simple.script "$LPE_EMB/usr/share/udhcpc/default.script"
+chmod a+x "$LPE_EMB/usr/share/udhcpc/default.script"
+cp -v compilation/busybox/busybox-1.27.2/examples/inittab "$LPE_EMB/etc"
+
+WT_MSG="Installer un utilisateur par defaut?"
+
+_questionbox
+
+if [ $WT_EXIT_STATUS = 0 ]; then
+    echo "root::0:0:Super User:/:/bin/sh" > "$LPE_EMB/etc/passwd"
+    echo "root:x:0:" > "$LPE_EMB/etc/group"
+fi
