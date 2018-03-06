@@ -28,9 +28,7 @@ case "$WT_MENU_CHOICE" in
         . scripts/menu_sauvegarder.sh
     ;;
     "Restaurer")
-        WT_TITLE="Restaurer"
-        WT_MSG="Restaurer"
-        _msgbox
+        . scripts/menu_restaurer.sh
     ;;
     *)
     ;;
