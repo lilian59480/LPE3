@@ -15,7 +15,7 @@ WT_MSG="Quelle est la sauvegarde que vous voulez charger?"
 LPE_TEMP="ON"
 FICHIERS=""
 for file in "saves/*"; do
-    FICHIERS+=("$file" "" "$LPE_TEMP")
+    FICHIERS="$FICHIERS $file $LPE_TEMP"
     LPE_TEMP="OFF"
 done
 

@@ -6,12 +6,14 @@ WT_MSG="Choissisez une action a effectuer"
 if [ -z "$LPE_EMB" ]; then
     WT_MENU=("Partitionner" "Partitionner le disque" \
         "Systeme de fichiers" "Ajouter un systeme de fichier"\
-        "Chemins" "Definir les chemins pour la creation")
+        "Chemins" "Definir les chemins pour la creation"\
+        "Copie (V2)" "Cle USB Bootable")
 else
     WT_MENU=("Partitionner" "Partitionner le disque" \
         "Systeme de fichiers" "Ajouter un systeme de fichier"\
         "Chemins" "Chemin : $LPE_EMB"\
-        "Copie (V1)" "Copie des fichiers de base")
+        "Copie (V1)" "Copie des fichiers de base"\
+        "Copie (V2)" "Cle USB Bootable")
 fi
 
 _menubox
@@ -61,6 +63,9 @@ case "$WT_MENU_CHOICE" in
     ;;
     "Copie (V1)")
         . scripts/creation_copiev1.sh
+    ;;
+    "Copie (V2)")
+        . scripts/creation_copiev2.sh
     ;;
     *)
     ;;
